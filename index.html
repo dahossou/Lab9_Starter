@@ -128,11 +128,7 @@
       output.textContent = result;
     }
     catch(err){
-      if(err instanceof InvalidCalculationError){
-        console.error("Invalid Calculation Error:", err.message);
-      }else{
-        console.error("Error:", err);
-      }
+      console.error("Invalid Calculation Error:", err.message);
       output.textContent = `Error: ${err.message}`;
     } finally {
       console.log("Calculation attempt complete.")
@@ -152,31 +148,39 @@
 
     errorBtns[2].addEventListener('click', e => {
       console.count("Count incremented example");
+
     });
     errorBtns[3].addEventListener('click', e => {
       console.warn("This is a console warn");
+
     });
     errorBtns[4].addEventListener('click', e => {
-      const example = [1,2,3]
+      const example = [1,2,3];
       console.assert(example.length === 3, "example should be of length 3", example);
+
     });
     errorBtns[5].addEventListener('click', e => {
       console.clear();
+
     });
     errorBtns[6].addEventListener('click', e => {
       console.dir(document.body);
+
     });
     errorBtns[7].addEventListener('click', e => {
       console.dirxml(document.body);
+
     });
     errorBtns[8].addEventListener('click', e => {
       console.group("Grouped logs");
       console.log("inside group 1");
       console.log("inside group 2");
     });
+
     errorBtns[9].addEventListener('click', e => {
       console.groupEnd();
     });
+
     errorBtns[10].addEventListener('click', e => {
       console.table([
         {name: "Joan of Arc", age: 22},
@@ -184,16 +188,19 @@
         {name: "Jack the Ripper", age: 999}
       ]);
     });
+
     errorBtns[11].addEventListener('click', e => {
       console.time();
       console.log("TImer has begun");
     });
+
     errorBtns[12].addEventListener('click', e => {
       console.timeEnd();
       console.log("Timer has ended");
     });
+
     errorBtns[13].addEventListener('click', e => {
-      console.trace("Trace message");
+      console.trace("Trace message");   
     });
 
     //Global error
