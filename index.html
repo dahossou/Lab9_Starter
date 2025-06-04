@@ -116,7 +116,7 @@
       if(!firstNum || !secondNum){
         throw new InvalidCalculationError("Please enter both inputs");
       }
-      if(isNan(firstNum) || isNan(secondNum)){
+      if(isNaN(firstNum) || isNaN(secondNum)){
         throw new InvalidCalculationError("Please enter numeric values");
       }
       if(operator === "/" && Number(secondNum) === 0){
