@@ -88,6 +88,13 @@
   </main>
 
   <script>
+
+    class InvalidCalculationError extends Error{
+      constructor(message){
+        super(message);
+        this.name = "InvalidCalculationError"
+      }
+    }
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
       e.preventDefault();
@@ -96,13 +103,110 @@
       let secondNum = document.querySelector('#second-num').value;
       let operator = document.querySelector('#operator').value;
       output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
-    });
 
+    try{
+      if(!firstNum || !secondNum){
+        throw new InvalidCalculationError("Please enter both inputs");
+      }
+      if(isNan(firstNum) || isNan(secondNum)){
+        throw new InvalidCalculationError("Please enter numeric values");
+      }
+      if(operator === "/" && Number(secondNum) === 0){
+        throw new Error("You may not divide by 0");
+      }
+      const result = eval(`${firstNum} ${operator} ${secondNum}`);
+      output.textContent = result;
+    }
+    catch(error){
+      if(error instanceof InvalidCalculationError){
+        console.error("Invalid Calculation Error:", error.message);
+      }else{
+        console.error("Error:", error);
+      }
+      output.innerHTML = `Error: ${error.message}`;
+    } finally {
+      console.log("Calculation attempt complete.")
+    }
+  });
+  
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
 
-    // Start your code here
-    // You may move this JS to another file if you wish
+
+    errorBtns[0].addEventListener('click', e => {
+      console.log("This is a console log example");
+    });
+    
+    errorBtns[1].addEventListener('click', e => {
+      console.error("This is a console error example");
+    });
+
+    errorBtns[2].addEventListener('click', e => {
+      console.count("Count incremented example");
+    });
+    errorBtns[3].addEventListener('click', e => {
+      console.warn("This is a console warn");
+    });
+    errorBtns[4].addEventListener('click', e => {
+      const example = [1,2,3]
+      console.assert(example.length === 3, "example should be of length 3", example);
+    });
+    errorBtns[5].addEventListener('click', e => {
+      console.clear();
+    });
+    errorBtns[6].addEventListener('click', e => {
+      console.dir(document.body);
+    });
+    errorBtns[7].addEventListener('click', e => {
+      console.dirxml(document.body);
+    });
+    errorBtns[8].addEventListener('click', e => {
+      console.group("Grouped logs");
+      console.log("inside group 1");
+      console.log("inside group 2");
+    });
+    errorBtns[9].addEventListener('click', e => {
+      console.groupEnd();
+    });
+    errorBtns[10].addEventListener('click', e => {
+      console.table([
+        {name: "Joan of Arc", age: 22},
+        {name: "Alexander The Great", age: 36},
+        {name: "Jack the Ripper", age: 999}
+      ]);
+    });
+    errorBtns[11].addEventListener('click', e => {
+      console.time();
+      console.log("TImer has begun");
+    });
+    errorBtns[12].addEventListener('click', e => {
+      console.timeEnd();
+      console.log("Timer has ended");
+    });
+    errorBtns[13].addEventListener('click', e => {
+      console.trace("Trace message");
+    });
+
+    //Global error
+    errorBtns[14].addEventListener('click', e => {
+      nonExistentFunctionCall();
+    });
+
+    window.onerror = function(message, source, lineno, colno, error){
+      console.log("Global warning caught.");
+      console.log("Message:", message);
+      console.log("lineno:", lineno);
+      console.log("colno:", colno);
+      console.log("error:", error);
+    };
+
+
   </script>
+  <script src="https://cdn.track.js.com/agent/v3/latest/t.js"></script>
+    <script>
+      window.TRACKJS && TRACKJS.install({
+        token: "ddfba872da644956a8e15ef696177047"
+      });
+    </script>
 </body>
 
 </html>
