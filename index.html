@@ -125,13 +125,13 @@
       const result = eval(`${firstNum} ${operator} ${secondNum}`);
       output.textContent = result;
     }
-    catch(error){
-      if(error instanceof InvalidCalculationError){
-        console.error("Invalid Calculation Error:", error.message);
+    catch(err){
+      if(err instanceof InvalidCalculationError){
+        console.error("Invalid Calculation Error:", err.message);
       }else{
-        console.error("Error:", error);
+        console.error("Error:", err);
       }
-      output.innerHTML = `Error: ${error.message}`;
+      output.innerHTML = `Error: ${err.message}`;
     } finally {
       console.log("Calculation attempt complete.")
     }
