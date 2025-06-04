@@ -6,14 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js">
-  </script>
-    <script>
-  window.TrackJS && TrackJS.install({ 
-    token: "5c018633fb194438a57fb14688859d4f"
-    // for more configuration options, see https://docs.trackjs.com
-  });
-</script>
 
   <style>
     button {
@@ -94,6 +86,16 @@
       <button>Trigger a Global Error</button>
     </section>
   </main>
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js">
+  </script>
+    <script>
+  window.TrackJS && TrackJS.install({ 
+    token: "5c018633fb194438a57fb14688859d4f",
+    application: lab9
+    // for more configuration options, see https://docs.trackjs.com
+  });
+</script>
+
 
   <script>
 
@@ -206,7 +208,6 @@
       console.log("colno:", colno);
       console.log("error:", error);
     };
-
 
     TrackJS.track('Testing TrackJS!');
 
