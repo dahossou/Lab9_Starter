@@ -201,7 +201,7 @@
       nonExistentFunctionCall();
     });
 
-    window.onerror = function(message, source, lineno, colno, error){
+    window.onerror = function(message, source, lineno, colno, error) {
       console.log("Global warning caught.");
       console.log("Message:", message);
       console.log("lineno:", lineno);
