@@ -131,7 +131,7 @@
       }else{
         console.error("Error:", err);
       }
-      output.innerHTML = `Error: ${err.message}`;
+      output.textContent = `Error: ${err.message}`;
     } finally {
       console.log("Calculation attempt complete.")
     }
@@ -205,7 +205,6 @@
       console.log("lineno:", lineno);
       console.log("colno:", colno);
       console.log("error:", error);
-      return true;
     };
 
 
